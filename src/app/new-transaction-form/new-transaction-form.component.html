@@ -1,0 +1,177 @@
+<div>
+    <mat-card>
+        <mat-card-content>
+            <form class="form" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+                <h2>New Transaction</h2>
+                <mat-error *ngIf="!formValid">
+                    Please enter correct form values.
+                </mat-error>
+
+                <div class="form-group margin-bottom-5">
+                   <div class="grid-container">
+                        <div class="grid-child">
+                            <input  id="newCustomer" type="radio" value="NEW"
+                                name="type" formControlName="type"
+                                [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                            <label for="newCustomer" class="margin-left-5">New</label>
+                        </div>
+                        <div class="grid-child">
+                            <input  id="existingCustomer" type="radio"
+                                value="EXISTING" name="type" formControlName="type"
+                                [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                            <label for="existingCustomer" class="margin-left-5">Existing</label>
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please select a valid Type
+                        </mat-error>
+                    </div>
+                </div>
+
+
+                <mat-form-field>
+                    <input matInput placeholder="Reference" type="text" formControlName="reference" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.reference.errors }" />
+                    <div *ngIf="submitted && f.reference.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Reference
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <input matInput placeholder="Customer Number" type="text" formControlName="cNumber"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cNumber.errors }" (blur)="getCustomerInfo()"/>
+                    <div *ngIf="submitted && f.cNumber.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Customer Number
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Customer Name" type="text" formControlName="cName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.cName.errors }" />
+                    <div *ngIf="submitted && f.cName.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Customer Name
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Customer Address" type="textarea" formControlName="cAddress"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cAddress.errors }" />
+                    <div *ngIf="submitted && f.cAddress.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Customer Address
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput numbersOnlyField placeholder="Customer Phone Number" type="text"
+                        formControlName="cPhoneNumber" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.cPhoneNumber.errors }" />
+                    <div *ngIf="submitted && f.cPhoneNumber.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Customer Phone Number
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput numbersOnlyField placeholder="Transfer Amount" type="text"
+                        formControlName="transferAmount" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.transferAmount.errors }" />
+                    <div *ngIf="submitted && f.transferAmount.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid TransferAmount
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Transfer Currency</mat-label>
+                    <select matNativeControl formControlName="transferCurrency" name="transferCurrency">
+                        <option value="" selected>Select Currency</option>
+                        <option *ngFor="let currency of currencies" [value]="currency">
+                            {{currency}}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f.transferCurrency.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please select a valid Transfer Currency
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput textOnlyField placeholder="Benificiary Bank" type="text" formControlName="benBank"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.benBank.errors }" />
+                    <div *ngIf="submitted && f.benBank.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Beneficiary Bank
+                        </mat-error>
+
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Benificiary Bank Account Number" type="text"
+                        formControlName="benBankAccount" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.benBankAccount.errors }" />
+                    <div *ngIf="submitted && f.benBankAccount.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Beneficiary Bank Account Number
+                        </mat-error>
+
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput textOnlyField placeholder="Payment Details" type="text"
+                        formControlName="paymentDetails" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.paymentDetails.errors }" />
+                    <div *ngIf="submitted && f.paymentDetails.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide valid Payment details
+                        </mat-error>
+
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Credit/Debit Card Details" type="text" formControlName="cardDetails"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cardDetails.errors }" />
+                    <div *ngIf="submitted && f.cardDetails.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please provide a valid Card Details
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Region</mat-label>
+                    <select matNativeControl formControlName="region" name="region">
+                        <option value="" selected>Select Region</option>
+                        <option *ngFor="let reg of regions" [value]="reg">
+                            {{reg}}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f.region.errors" class="invalid-feedback">
+                        <mat-error>
+                            Please select a valid Region
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                
+                <button mat-raised-button (click)="onSubmit()" color="primary"
+                    [disabled]="!transactionForm.valid">Submit</button>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>>

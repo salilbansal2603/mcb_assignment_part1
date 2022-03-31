@@ -1,0 +1,61 @@
+{
+    "data": {
+        "transactions": [
+            {
+                "reference": "CUS202103021",
+                "transferAmount": 34,
+                "transferCurrency": "AED",
+                "custInfo": {
+                    "cNumber": "234234",
+                    "cName": "Salil Bansal",
+                    "cAddress": "Downing Street, London",
+                    "cPhoneNumber": "263518242"
+                }
+            },
+            {
+                "reference": "CUS201904022",
+                "transferAmount": 104,
+                "transferCurrency": "AED",
+                "custInfo": {
+                    "cNumber": "24124",
+                    "cName": "Ricky Martin",
+                    "cAddress": "White House, USA",
+                    "cPhoneNumber": "99837629"
+                }
+            },
+            {
+                "reference": "CUS202006023",
+                "transferAmount": 234,
+                "transferCurrency": "CHF",
+                "custInfo": {
+                    "cNumber": "2311234",
+                    "cName": "Rakesh Sharma",
+                    "cAddress": "Moonlight Street, Space Road",
+                    "cPhoneNumber": "2666662"
+                }
+            },
+            {
+                "reference": "CUS202003214",
+                "transferAmount": 1,
+                "transferCurrency": "USD",
+                "custInfo": {
+                    "cNumber": "874234",
+                    "cName": "Kalpana Chawla",
+                    "cAddress": "Jind, Haryana",
+                    "cPhoneNumber": "66554422242"
+                }
+            },
+            {
+                "reference": "CUS200807025",
+                "transferAmount": 99,
+                "transferCurrency": "EUR",
+                "custInfo": {
+                    "cNumber": "884265",
+                    "cName": "Aisha Malhotra",
+                    "cAddress": "OFfice Street, Chandigarh",
+                    "cPhoneNumber": "8765238242"
+                }
+            }
+        ]
+    }
+}

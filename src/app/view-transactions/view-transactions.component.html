@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-content>
+        <h2>List of Transactions</h2>
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="cName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</th>
+              <td mat-cell *matCellDef="let element"> {{element.cName}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="transferAmount">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Transfer Amount</th>
+              <td mat-cell *matCellDef="let element"> {{element.transferAmount}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="transferCurrency">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Transfer Currency</th>
+              <td mat-cell *matCellDef="let element"> {{element.transferCurrency}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="reference">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Reference</th>
+                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+          </table>
+        
+          <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20, 25]">
+        </mat-paginator>
+    </mat-card-content>
+</mat-card>

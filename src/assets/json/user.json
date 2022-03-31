@@ -1,0 +1,17 @@
+{"users": [
+    {
+        "userName": "salil.bansal@nagarro.com",
+        "password": "abc123",
+        "role": "ADMIN",
+        "firstName": "Salil",
+        "lastName": "Bansal"
+    },
+    {
+        "userName": "salil.bansal@gmail.com",
+        "password": "abc456",
+        "role": "USER",
+        "firstName": "Sameer",
+        "lastName": "Bansal"
+    }
+]
+}
